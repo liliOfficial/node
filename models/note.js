@@ -4,6 +4,11 @@ const fs = require('fs');
 const day = 365;
 
 const addNote = name => {
+  // fs.appendFile('files/append-file.txt',`Hello world `,function(err){
+  //     if(err) {
+  //         console.log('Unable to write to file');
+  //     }
+  // })
   const test = `Hello ${name}！ You have been here for ${day} days! \n`;
   fs.appendFileSync('files/greeting.txt', test);
   return test;
@@ -26,10 +31,10 @@ const getCards = () => {
   const notes = fetchNote();
   const cards = notes['enrollment']['cards'];
   return JSON.stringify(cards);
-}
+};
 
 const getCard = id => {
-  console.log(typeof(id));
+  console.log(typeof id);
   const notes = fetchNote();
   const cards = notes['enrollment']['cards'];
   const card = cards.filter(card => card['cardId'] === id);
@@ -38,8 +43,12 @@ const getCard = id => {
 
 const addCard = () => {
   const date = new Date();
-  const id = Math.random().toString(10).slice(2,9);
-  const fourNo = Math.random().toString(10).slice(2,6);
+  const id = Math.random()
+    .toString(10)
+    .slice(2, 9);
+  const fourNo = Math.random()
+    .toString(10)
+    .slice(2, 6);
   const note = {
     cardId: id,
     cardLastFour: fourNo,

@@ -1,16 +1,14 @@
-const express = require('express');
-const app = express();
 const path = require('path');
-
+const http = require('http');
 const os = require('os');
-const yargs = require('yargs');
 const user = os.userInfo();
+const express = require('express');
+const socketIO = require('socket.io');
 
-// fs.appendFile('files/append-file.txt',`Hello world `,function(err){
-//     if(err) {
-//         console.log('Unable to write to file');
-//     }
-// })
+const app = express();
+var server = http.createServer(app);
+var io = socketIO(server);
+const yargs = require('yargs');
 
 // const encodedAddress = encodeURIComponent('1301 chatswood nsw');
 // const decodedAddress = decodeURIComponent('1301%20lombord%20street%20philadelphia');
@@ -20,19 +18,21 @@ const user = os.userInfo();
 // console.log(process.argv);
 // console.log(yargs.argv);
 
-// note.addCard();
-const publicPath = path.join(__dirname , '/public');
+const publicPath = path.join(__dirname, '/public');
 app.use(express.static(publicPath));
 
-app.get('/', (req, res) => {
-  res.send('Hello Express!');
+require('./init/routes')(app);
+require('./init/db')();
+require('./init/config')();
+
+io.on('connection', socket => {
+  console.log('New user connected');
+  socket.on('disconnect', () => {
+    console.log('Disconnected from server');
+  });
 });
 
-require("./init/routes")(app);
-require('./init/db')();
-require("./init/config")();
-
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Listening on port ${port}...`);
 });
