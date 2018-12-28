@@ -27,6 +27,13 @@ require('./init/config')();
 
 io.on('connection', socket => {
   console.log('New user connected');
+
+  socket.on('createEmail', email => {
+    console.log(email);
+    io.emit('newEmail', email);
+    // socket.broadcast.emit('newEmail', email);
+  });
+
   socket.on('disconnect', () => {
     console.log('Disconnected from server');
   });
