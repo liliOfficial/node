@@ -3,11 +3,9 @@ const http = require('http');
 const os = require('os');
 const user = os.userInfo();
 const express = require('express');
-const socketIO = require('socket.io');
 
 const app = express();
-var server = http.createServer(app);
-var io = socketIO(server);
+const server = http.createServer(app);
 const yargs = require('yargs');
 
 // const encodedAddress = encodeURIComponent('1301 chatswood nsw');
@@ -24,20 +22,9 @@ app.use(express.static(publicPath));
 require('./init/routes')(app);
 require('./init/db')();
 require('./init/config')();
-
-io.on('connection', socket => {
-  console.log('New user connected');
-
-  socket.on('createEmail', email => {
-    console.log(email);
-    io.emit('newEmail', email);
-    // socket.broadcast.emit('newEmail', email);
-  });
-
-  socket.on('disconnect', () => {
-    console.log('Disconnected from server');
-  });
-});
+require('./init/socket')(server);
+// io.on('connection', socket => {
+//   console.log('New user connected');
 
 const port = process.env.PORT || 3000;
 server.listen(port, () => {

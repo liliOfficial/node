@@ -4,7 +4,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon --exec npm run babel-node",
-    "babel-node":"babel-node app.js",
+    "babel-node": "babel-node app.js",
     "test": "mocha **/*.test.js",
     "test-watch": "nodemon --exec \"npm test\""
   },
@@ -21,6 +21,7 @@
     "joi": "^14.3.0",
     "jsonwebtoken": "^8.4.0",
     "lodash": "^4.17.11",
+    "moment": "^2.23.0",
     "mongoose": "^5.3.15",
     "socket.io": "^2.2.0",
     "validator": "^10.9.0",
