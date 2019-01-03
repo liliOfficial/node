@@ -5,11 +5,13 @@ form {
     bottom: 0;
     width:100%;
     padding:15px;
+    padding-right: 215px;
 }
 .message-box {
     position:fixed;
     bottom:0;    
-    padding-bottom: 346px;
+    padding-bottom: 255px;
+    padding-right: 200px;
     width:100%;
     height:100%;
 }
@@ -18,18 +20,34 @@ form {
     background:rgba(0,0,0,0.1);
     padding:10px 15px;
 }
-.output-box {
+.message-box .output-box {
     position: relative;
     bottom:0;
     height: 100%;
     width: 100%;    
     overflow-y: auto;
 }
-#output {
+.message-box .output-box #output {
     position: absolute;
     padding:0 15px;
     bottom: 0;
     max-height: 100%;
     width: 100%;
     overflow-y: auto;
+}
+
+.user-list {
+    position: fixed;
+    right:0;
+    width:200px;
+    top:0;
+    background:#343a40;
+    height:100%;
+    padding:15px;
+    color:#fff;
+}
+
+.user-list ul {
+    list-style: none;
+    padding: 15px 0;
 }
