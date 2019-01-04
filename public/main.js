@@ -28,28 +28,29 @@ socket.on('updateUserList', function(users) {
 });
 
 socket.on('newEnter', function(params) {
-  var message = params.userName + ' enter ' + roomName;
+  var message = params.userName + ' entered ' + roomName;
   systemMessage(message);
 });
 socket.on('newLeave', function(user) {
   console.log(user);
-  var message = user + ' leave ' + roomName;
+  var message = user + ' left ' + roomName;
   LeaveMessage(message);
 });
 
 socket.on('newMessage', function(content) {
   var user = $('<b>' + content.from + '</b>');
   var time = $('<small class=" ml-2 text-muted">' + content.time + '</small>');
-  var message = $('<div class="mb-3">' + content.message + '</div>');
+  var message = $('<div class="mb-2">' + content.message + '</div>');
 
   $('#output').append(user, time, message);
   scrollToBottom();
 });
 socket.on('newLocation', function(content) {
   console.log('New Location:', content);
-  var a = $('<a target="_blank">User current location</a><br/>');
+  var user = $('<b>' + content.user + ': </b>');
+  var a = $('<a class="location" target="_blank"> share current location</a><br/>');
   a.attr('href', content.url);
-  $('#output').append(a);
+  $('#output').append(user,a);
   $('#output').scrollTop($('#output')[0].scrollHeight);
 });
 
@@ -97,7 +98,7 @@ function scrollToBottom() {
 
 function systemMessage(message) {
   var badage = $(
-    '<div class="badge badge-pill badge-success my-1">' +
+    '<div class="badge badge-pill badge-basic my-1">' +
       message +
       '</div><br/>'
   );
@@ -107,7 +108,7 @@ function systemMessage(message) {
 
 function LeaveMessage(message) {
   var badage = $(
-    '<div class="badge badge-pill badge-danger my-1">' + message + '</div><br/>'
+    '<div class="badge badge-pill badge-danger my-">' + message + '</div><br/>'
   );
   $('#output').append(badage);
   scrollToBottom();

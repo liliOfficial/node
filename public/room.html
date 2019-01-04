@@ -14,30 +14,31 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
   </head>
   <body>
-    <div class="message-box">
-      <h3>Welcome to <span id="room"></span></h3>
-      <div class="output-box">
-        <div id="output"></div>
-      </div>      
-    </div>
-    <form class="info-form">
-      <div class="form-group">
-        <label for="message">Message</label>
-        <textarea
-          class="form-control"
-          id="message"
-          rows="3"
-          placeholder="Enter Message"
-        ></textarea>
-        <small id="messagevali" class="form-text text-muted"></small>
+    <div>
+      <div class="message-box">
+        <h3>Welcome to <span id="room"></span></h3>
+        <div class="output-box"><div id="output"></div></div>
       </div>
-      <button type="button" id="submit-btn" class="btn btn-primary">
-        Submit
-      </button>
-      <button type="button" id="location" class="btn btn-dark">
-        Send Location
-      </button>
-    </form>
+      <form class="info-form">
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea
+            class="form-control"
+            id="message"
+            rows="3"
+            placeholder="Enter Message"
+          ></textarea>
+          <small id="messagevali" class="form-text text-muted"></small>
+        </div>
+        <button type="button" id="submit-btn" class="btn btn-basic">
+          Submit
+        </button>
+        <button type="button" id="location" class="btn btn-dark">
+          Send Location
+        </button>
+      </form>
+    </div>
+
     <div class="user-list">
       <h4>User List</h4>
       <ul id="users"></ul>
@@ -47,6 +48,5 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="deparam.js"></script>
     <script src="main.js"></script>
-    
   </body>
 </html>

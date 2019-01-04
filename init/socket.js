@@ -35,11 +35,15 @@ module.exports = function(server) {
     });
 
     socket.on('createLocationMessage', coords => {
-      io.emit('newLocation', {
-        url: `https://www.google.com.au/maps?q=${coords.latitude},${
-          coords.longitude
-        }`
-      });
+      const user = users.getUser(socket.id);
+      if (user) {
+        io.to(user.room).emit('newLocation', {
+          user: user.name,
+          url: `https://www.google.com.au/maps?q=${coords.latitude},${
+            coords.longitude
+          }`
+        });
+      }
     });
 
     socket.on('disconnect', () => {

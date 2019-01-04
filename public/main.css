@@ -1,53 +1,93 @@
 form {
-    background:rgba(0,0,0,0.1);
-    position: fixed;
-    margin: 0;
-    bottom: 0;
-    width:100%;
-    padding:15px;
-    padding-right: 215px;
+  background: #363839;
+  color: #fff;
+  position: fixed;
+  margin: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 15px;
+  padding-right: 215px;
 }
 .message-box {
-    position:fixed;
-    bottom:0;    
-    padding-bottom: 255px;
-    padding-right: 200px;
-    width:100%;
-    height:100%;
+  position: fixed;
+  bottom: 0;
+  padding-bottom: 255px;
+  padding-right: 200px;
+  width: 100%;
+  height: 100%;
+  background: #f2f2f2;
 }
 .message-box h3 {
-    margin:0;
-    background:rgba(0,0,0,0.1);
-    padding:10px 15px;
+  margin: 0;
+  background: #363839;
+  color: #fff;
+  padding: 10px 15px;
 }
 .message-box .output-box {
-    position: relative;
-    bottom:0;
-    height: 100%;
-    width: 100%;    
-    overflow-y: auto;
+  position: relative;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
 }
 .message-box .output-box #output {
-    position: absolute;
-    padding:0 15px;
-    bottom: 0;
-    max-height: 100%;
-    width: 100%;
-    overflow-y: auto;
+  position: absolute;
+  padding: 0 15px;
+  bottom: 0;
+  max-height: 100%;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.message-box .output-box #output .location {
+  color: #a46498;
+  padding: 0 5px;
 }
 
 .user-list {
-    position: fixed;
-    right:0;
-    width:200px;
-    top:0;
-    background:#343a40;
-    height:100%;
-    padding:15px;
-    color:#fff;
+  position: fixed;
+  right: 0;
+  width: 200px;
+  top: 0;
+  background: #a46498;
+  height: 100%;
+  padding: 15px;
+  color: #fff;
 }
 
 .user-list ul {
-    list-style: none;
-    padding: 15px 0;
+  list-style: none;
+  padding: 10px 0;
+}
+
+.user-list li {
+    background:rgba(0,0,0,0.1);
+    margin:3px 0;
+    padding:2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+.user-list li:hover {
+    box-shadow:inset 1px 2px 2px rgba(0, 0, 0, 0.7);
+}
+
+.btn:focus {
+  box-shadow: 0 0 0 0.2rem rgba(160, 160, 160, 0.25);
+}
+
+.btn-basic {
+  color: #fff;
+  background-color: #a46498;
+  border-color: #a46498;
+}
+.btn-basic:hover {
+  color: #fff;
+  background-color: #925a87;
+  border-color: #925a87;
+}
+
+.badge-basic {
+  color: #fff;
+  background-color: #a46498;
 }
