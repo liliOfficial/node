@@ -6,7 +6,7 @@ module.exports = function(server) {
   const io = socketIO(server);
   const users = new Users();
   io.on('connection', socket => {
-    console.log('New user connected');
+    // console.log('New user connected');
     socket.on('roomEnter', params => {
       if (params.userName && params.roomName) {
         socket.join(params.roomName);

@@ -23,8 +23,9 @@ require('./init/routes')(app);
 require('./init/db')();
 require('./init/config')();
 require('./init/socket')(server);
-// io.on('connection', socket => {
-//   console.log('New user connected');
+
+require('./init/await')();
+
 
 const port = process.env.PORT || 3000;
 server.listen(port, () => {
